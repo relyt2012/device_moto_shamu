@@ -287,6 +287,9 @@ void power_hint(power_hint_t hint, void *data)
         case POWER_HINT_VIDEO_DECODE:
             process_video_decode_hint(data);
         break;
+        case POWER_HINT_SET_PROFILE:
+            ALOGI("set profile power hint not handled in power_hint_override");
+        break;
         default:
         break;
     }

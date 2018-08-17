@@ -230,6 +230,13 @@ Return<void> Power::powerHintAsync(PowerHint hint, int32_t data) {
 }
 #endif
 
+Return<int32_t> Power::getFeature(LineageFeature feature)  {
+    if (feature == LineageFeature::SUPPORTED_PROFILES) {
+        return get_number_of_profiles();
+    }
+    return -1;
+}
+
 status_t Power::registerAsSystemService() {
     status_t ret = 0;
 
@@ -239,6 +246,14 @@ status_t Power::registerAsSystemService() {
         goto fail;
     } else {
         ALOGI("Successfully registered IPower");
+    }
+
+    ret = ILineagePower::registerAsService();
+    if (ret != 0) {
+        ALOGE("Failed to register ILineagePower (%d)", ret);
+        goto fail;
+    } else {
+        ALOGI("Successfully registered ILineagePower");
     }
 
 fail:
