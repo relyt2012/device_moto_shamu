@@ -103,7 +103,6 @@ BOARD_FLASH_BLOCK_SIZE := 131072
 
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
-BOARD_HAL_STATIC_LIBRARIES := libhealthd.shamu
 
 TARGET_RECOVERY_FSTAB = device/moto/shamu/rootdir/etc/fstab.shamu
 
