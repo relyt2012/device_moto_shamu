@@ -1,0 +1,39 @@
+# Temperature sensor daemon (root process)
+type thermal-engine, domain;
+type thermal-engine_exec, exec_type, vendor_file_type, file_type;
+
+# Started by init
+init_daemon_domain(thermal-engine)
+qmux_socket(thermal-engine)
+
+allow thermal-engine self:capability2 block_suspend;
+
+# to read /sys/devices
+allow thermal-engine sysfs:dir r_dir_perms;
+
+# Create and access to /dev/socket/thermal-.*
+type_transition thermal-engine socket_device:sock_file thermal_socket;
+allow thermal-engine socket_device:dir w_dir_perms;
+allow thermal-engine thermal_socket:sock_file create_file_perms;
+
+allow thermal-engine self:socket create_socket_perms;
+allowxperm thermal-engine self:socket ioctl msm_sock_ipc_ioctls;
+
+allow thermal-engine {
+    shared_log_device
+    thermal_engine_device
+}:chr_file rw_file_perms;
+
+allow thermal-engine sysfs_socinfo:dir search;
+allow thermal-engine sysfs_socinfo:file { read open getattr };
+allow thermal-engine sysfs_thermal:dir r_dir_perms;
+allow thermal-engine sysfs_usb:file write;
+
+r_dir_file(thermal-engine, sysfs_batteryinfo)
+allow thermal-engine sysfs_batteryinfo:file w_file_perms;
+
+allow thermal-engine {
+    sysfs_kgsl_gpuclk
+    sysfs_mpdecision
+    sysfs_thermal
+}:file rw_file_perms;
