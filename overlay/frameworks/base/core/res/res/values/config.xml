@@ -375,6 +375,12 @@
     <!-- enable doze powersaving mode -->
     <bool name="config_enableAutoPowerModes">true</bool>
 
+    <!-- Enable system navigation keys. -->
+    <bool name="config_supportSystemNavigationKeys">true</bool>
+
+    <!-- Whether or not swipe up gesture's opt-in setting is available on this device -->
+    <bool name="config_swipe_up_gesture_setting_available">true</bool>
+
     <!-- set proper wifi power ratios -->
     <integer name="config_wifi_idle_receive_cur_ma">1</integer>
     <integer name="config_wifi_active_rx_cur_ma">100</integer>
@@ -407,4 +413,30 @@
     <bool name="config_proximityCheckOnWake">true</bool>
     <integer name="config_proximityCheckTimeout">250</integer>
     <bool name="config_proximityCheckOnWakeEnabledByDefault">true</bool>
+
+    <!-- Control whether Night display is available. This should only be enabled
+      on devices with HWC 2 color transform  support. -->
+    <bool name="config_nightDisplayAvailable">true</bool>
+    <!-- Default mode to control how Night display is automatically activated.
+        One of the following values (see NightDisplayController.java):
+            0 - AUTO_MODE_DISABLED
+            1 - AUTO_MODE_CUSTOM
+            2 - AUTO_MODE_TWILIGHT
+     -->
+     <integer name="config_defaultNightDisplayAutoMode">0</integer>
+     <!-- Default time when Night display is automatically activated.
+          Represented as milliseconds from midnight (e.g. 79200000 == 10pm). -->
+     <integer name="config_defaultNightDisplayCustomStartTime">79200000</integer>
+     <!-- Default time when Night display is automatically deactivated.
+          Represented as milliseconds from midnight (e.g. 21600000 == 6am). -->
+     <integer name="config_defaultNightDisplayCustomEndTime">21600000</integer>
+
+     <!-- Minimum color temperature, in Kelvin, supported by Night display. -->
+     <integer name="config_nightDisplayColorTemperatureMin">2596</integer>
+     <!-- Default color temperature, in Kelvin, to tint the screen when Night display is
+          activated. -->
+     <integer name="config_nightDisplayColorTemperatureDefault">2850</integer>
+     <!-- Maximum color temperature, in Kelvin, supported by Night display. -->
+     <integer name="config_nightDisplayColorTemperatureMax">4082</integer>
+
 </resources>
