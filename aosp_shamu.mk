@@ -47,5 +47,4 @@ PRODUCT_NAME := aosp_shamu
 PRODUCT_PACKAGES += \
     LatinIME \
     MusicFX \
-    Jelly \
-    Snap
+    Jelly 

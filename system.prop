@@ -1,5 +1,5 @@
 # system.prop for shamu
-ro.extended.display.version=shamu
+ro.extended.display.version=5.9
 
 
 # Audio
@@ -36,10 +36,6 @@ ro.opengles.version=196610
 ro.sf.lcd_density=560
 persist.hwc.mdpcomp.enable=true
 vidc.debug.level=1
-
-# Assertive Display
-ro.qcom.ad=1
-ro.qcom.ad.calib.data=/system/etc/ad_calib.cfg
 
 # DRM service
 drm.service.enabled=true
